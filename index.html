@@ -1,38 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Como usar jquery </title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Utilizando Json</title>
 </head>
+        
 <body>
-    <div><h1>Lista de nome</h1></div>
-    <div>
-        <ul style="font-size: 35px;">
-        <li>Maria</li>
-        <li>Marcos</li>
-        <li>Maria</li>
-        <li>Aline</li>
-        <li>Adriane</li>
-    </ul>
-    </div>
-    <div>
-        <button id="btn" src="">Click aqui</button>
-    </div>
-
+    <div id="usuarios"> </div>
+        
     <script>
-        $('#btn').on("click",botao) // Ao clicar no botão a lista ficara azul
-        function botao(){
-        $('li').css({'color':'red'})
-        }
-        </script>
-                   
+        let divUsuarios = document.querySelector("#usuarios") 
+        fetch("dados.json").then((response) => {
+         response.json().then((dados) => {dados.usuarios.map((usuario) => {divUsuarios.innerHTML += `<li> ${usuario.nome} - ${usuario.idade} anos</li>`
+        })
+    })
+})
+    </script>
+     </div>
 </body>
-
 </html>
-
-/* <script>
-    $('h1').fadeOut("2000") // Sair da tela por 2 segundos
-</script> */
